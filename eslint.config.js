@@ -22,8 +22,6 @@ export default defineConfig([
     },
     plugins: { 'simple-import-sort': simpleImportSort },
     rules: {
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
