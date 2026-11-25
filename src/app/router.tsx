@@ -28,6 +28,12 @@ export const router = createBrowserRouter([
           Component: (await import('@/pages/NotFoundPage')).NotFoundPage,
         }),
       },
+      {
+        path: ROUTES.TODOS,
+        lazy: async () => ({
+          Component: (await import('@/pages/TodoPage')).TodosPage,
+        }),
+      },
     ],
   },
 ]);

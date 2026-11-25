@@ -21,6 +21,9 @@ export function RootLayout() {
           <NavLink to={ROUTES.ABOUT} className={linkClass}>
             About
           </NavLink>{' '}
+          <NavLink to={ROUTES.TODOS} className={linkClass}>
+            Todos
+          </NavLink>{' '}
         </nav>
         <ThemeToggle />
       </header>
