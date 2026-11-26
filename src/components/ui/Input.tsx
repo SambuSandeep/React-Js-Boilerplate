@@ -10,7 +10,7 @@ export function Input({ className, type = 'text', ...props }: ComponentProps<'in
         'h-10 w-full rounded-md border border-border bg-surface px-3 text-sm',
         'placeholder:text-muted-foreground',
         'focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-ring',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-danger aria-invalid:focus-visible:outline-danger',
         className,
       )}
       {...props}
