@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { authApi } from './api';
 import { useAuthStore } from './store';
+import { notify } from '@/lib/notify';
 
 export function useAuth() {
   const status = useAuthStore((state) => state.status);
@@ -12,7 +13,10 @@ export function useAuth() {
 export function useLogin() {
   return useMutation({
     mutationFn: authApi.login,
-    onSuccess: (session) => useAuthStore.getState().setSession(session),
+    onSuccess: (session) => {
+      useAuthStore.getState().setSession(session);
+      notify.success(`Welcome back, ${session.user.name}`);
+    },
   });
 }
 
@@ -24,6 +28,7 @@ export function useLogout() {
       useAuthStore.getState().clearSession();
       // Drop all cached data so the next user never sees the previous user's data
       queryClient.clear();
+      notify.success('Logged out successfully');
     },
   });
 }

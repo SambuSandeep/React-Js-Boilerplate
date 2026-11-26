@@ -1,6 +1,8 @@
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router';
 
 import { ROUTES } from '@/config/routes';
+import { useEffect } from 'react';
+import { captureError } from '@/lib/report-error';
 
 export function ErrorPage() {
   const error = useRouteError();
@@ -10,6 +12,10 @@ export function ErrorPage() {
     : error instanceof Error
       ? error.message
       : 'Unknown error';
+
+  useEffect(() => {
+    captureError(error, { source: 'route' });
+  }, [error]);
 
   return (
     <section>

@@ -1,9 +1,17 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryCache, QueryClient } from '@tanstack/react-query';
 
 import { ApiError } from '@/lib/api/errors';
+import { notify } from '@/lib/notify';
 
 export function createQueryClient() {
   return new QueryClient({
+    queryCache: new QueryCache({
+      onError: (error, query) => {
+        if (query.state.data === undefined) return;
+        if (error instanceof ApiError && error.isUnauthorized) return;
+        notify.error(error, 'Could not refresh data.', { id: 'query-refresh-error' });
+      },
+    }),
     defaultOptions: {
       queries: {
         staleTime: 30_000,
