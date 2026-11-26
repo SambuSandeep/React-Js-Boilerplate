@@ -1,14 +1,20 @@
-import { ThemeProvider } from '@/components/theme/ThemeProvider';
-import { createQueryClient } from '@/lib/query-client';
 import { QueryClientProvider } from '@tanstack/react-query';
-import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { type ReactNode, useState } from 'react';
+
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
+import { AuthProvider } from '@/components/AuthProvider';
+import { createQueryClient } from '@/lib/query-client';
 
 export function AppProviders({ children }: { children: ReactNode }) {
-  const [queryClient] = useState(() => createQueryClient());
+  const [queryClient] = useState(createQueryClient);
+
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }

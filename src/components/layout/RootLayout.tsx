@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/Button';
 import { ROUTES } from '@/config/routes';
 import { cn } from '@/lib/utils';
 import { useUiStore } from '@/stores/ui-stores';
+import { Can } from '@/components/Can';
+import { UserMenu } from '@/components/UserMenu';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -23,7 +25,10 @@ export function RootLayout() {
           <Button variant="outline" size="sm" onClick={toggleSidebar} aria-expanded={sidebarOpen}>
             {sidebarOpen ? 'Hide menu' : 'Show menu'}
           </Button>
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <UserMenu />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -40,6 +45,11 @@ export function RootLayout() {
               <NavLink to={ROUTES.TODOS} className={linkClass}>
                 Todos
               </NavLink>
+              <Can roles={['admin']}>
+                <NavLink to={ROUTES.ADMIN} className={linkClass}>
+                  Admin
+                </NavLink>
+              </Can>
             </nav>
           </aside>
         )}

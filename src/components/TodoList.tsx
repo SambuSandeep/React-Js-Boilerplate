@@ -3,7 +3,7 @@ import { Spinner } from '@/components/ui/Spinner';
 import { ApiError } from '@/lib/api/errors';
 import { cn } from '@/lib/utils';
 
-import { useTodos } from '@/feature/todos/hooks';
+import { useTodos } from '@/features/todos/hooks';
 
 export function TodoList() {
   const { data, error, isPending, isError, isFetching, refetch } = useTodos(10);
