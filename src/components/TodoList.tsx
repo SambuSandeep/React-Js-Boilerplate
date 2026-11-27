@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/Button';
-import { Spinner } from '@/components/ui/Spinner';
+import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 import { ApiError } from '@/lib/api/errors';
 import { cn } from '@/lib/utils';
 
@@ -13,7 +13,7 @@ export function TodoList() {
   if (isError) {
     return (
       <div role="alert" className="flex flex-col items-start gap-3">
-        <p className="text-danger">
+        <p className="text-destructive">
           {error instanceof ApiError ? error.message : 'Something went wrong.'}
         </p>
         <Button variant="outline" onClick={() => refetch()}>
@@ -31,7 +31,7 @@ export function TodoList() {
           <li
             key={todo.id}
             className={cn(
-              'rounded-md border border-border bg-surface px-3 py-2 text-sm',
+              'rounded-md border border-border bg-card px-3 py-2 text-sm',
               todo.completed && 'text-muted-foreground line-through',
             )}
           >

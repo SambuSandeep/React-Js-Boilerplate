@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { FormField } from '@/components/ui/FormField';
-import { Input } from '@/components/ui/Input';
+import { Input } from '@/components/ui/input';
 import { env } from '@/config/env';
 import { getErrorMessage } from '@/lib/notify';
 
@@ -51,7 +51,7 @@ export function LoginForm() {
       </FormField>
 
       {errors.root?.server && (
-        <p role="alert" className="text-sm text-danger">
+        <p role="alert" className="text-sm text-destructive">
           {errors.root.server.message}
         </p>
       )}

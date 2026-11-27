@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router';
 
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/config/routes';
 import { cn } from '@/lib/utils';
 import { useUiStore } from '@/stores/ui-stores';
@@ -20,7 +20,7 @@ export function RootLayout() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border bg-surface">
+      <header className="border-b border-border bg-card">
         <div className="flex h-14 items-center justify-between px-4">
           <Button variant="outline" size="sm" onClick={toggleSidebar} aria-expanded={sidebarOpen}>
             {sidebarOpen ? 'Hide menu' : 'Show menu'}
@@ -34,7 +34,7 @@ export function RootLayout() {
 
       <div className="flex">
         {sidebarOpen && (
-          <aside className="w-52 shrink-0 border-r border-border bg-surface p-3">
+          <aside className="w-52 shrink-0 border-r border-border bg-card p-3">
             <nav className="flex flex-col gap-1">
               <NavLink to={ROUTES.HOME} end className={linkClass}>
                 Home

@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from 'react';
 
-import { Spinner } from '@/components/ui/Spinner';
+import { Spinner } from '@/components/ui/spinner';
 
 import { initAuth } from '@/features/auth/bootstrap';
 import { useAuthStore } from '@/features/auth/store';

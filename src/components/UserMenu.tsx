@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/config/routes';
 
 import { useLogout } from '@/features/auth/hooks';

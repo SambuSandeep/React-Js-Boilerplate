@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { captureError } from '@/lib/report-error';
 
 function AppFallback({ error, resetErrorBoundary }: FallbackProps) {
